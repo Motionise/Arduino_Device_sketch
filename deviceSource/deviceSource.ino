@@ -223,7 +223,7 @@ void loop() {
     //finallllllllllllllly
     sensorData = "flex: " + String(indexfingerFlex) + " " + String(middlefingerFlex) + "\n" + 
                  "kalman: " + String(kalmanVal) + "\n" + 
-                 "mag: " + String(mx) +  " " + String(my) + " " + String(mz) + "\n";
+                 "mag: " + String(mx) +  " " + String(my) + " " + String(mz);
     
     
     Serial.println(sensorData);

@@ -221,8 +221,8 @@ void loop() {
     int middlefingerFlex = analogRead(A1);
 
     //finallllllllllllllly
-    sensorData = "flex: " + String(indexfingerFlex) + " " + String(middlefingerFlex) + "\n" + 
-                 "kalman: " + String(kalmanVal) + "\n" + 
+    sensorData = "flex: " + String(indexfingerFlex) + " " + String(middlefingerFlex) + "|" + 
+                 "kalman: " + String(kalmanVal) + "|" + 
                  "mag: " + String(mx) +  " " + String(my) + " " + String(mz);
     
     

@@ -226,7 +226,7 @@ void loop() {
                  "mag: " + String(mx) +  " " + String(my) + " " + String(mz);
     
     
-    Serial.println(sensorData);
+    Serial.print(sensorData);
   }
   
     //kalman filter

@@ -107,8 +107,8 @@ kalman kal ;
 double deg, dgy_y ;
 double dt ;
 uint32_t pasttime ;
-double kalmanVal;
-String sensorData;
+int kalmanVal;
+String flexData, kalmanData, magData, sensorData;
 
 //---------------------------------------------------------------------------//
 //setup
@@ -148,18 +148,18 @@ void setup() {
 
   // ==================== MPU6050 ========  ====================
   accelgyro.initialize();
-  Serial.print("Testing Accel/Gyro... ");
-  Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+//  Serial.print("Testing Accel/Gyro... ");
+//  Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
 
   // Starts up with accel +/- 2 g and gyro +/- 250 deg/s scale
   accelgyro.setI2CBypassEnabled(true); // set bypass mode
   // Now we can talk to the HMC5883l
 
   // ==================== HMC5883L ============================
-  mag.initialize();
-  Serial.print("Testing Mag...  ");
-  Serial.println(mag.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
-  Serial.println("Setup Complete");
+  //mag.initialize();
+//  Serial.print("Testing Mag...  ");
+//  Serial.println(mag.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
+//  Serial.println("Setup Complete");
 
 //kalman
    kal.init(0.001, 0.003, 0.03) ;  //init kalman filter
@@ -221,11 +221,11 @@ void loop() {
     int middlefingerFlex = analogRead(A1);
 
     //finallllllllllllllly
-    sensorData = "flex " + String(indexfingerFlex) + " " + String(middlefingerFlex) + ":" + 
-                 "kalman " + String(kalmanVal) + ":" + 
-                 "mag " + String(mx) +  " " + String(my) + " " + String(mz);
-    
-    
+    flexData = "flex " + String(indexfingerFlex) + " " + String(middlefingerFlex);
+    kalmanData = "kalman " + String(kalmanVal);
+    magData = "mag " + String(mx) +  " " + String(my) + " " + String(mz);
+    sensorData = flexData + ":" + kalmanData + ":" + magData + "\n";
+
     Serial.print(sensorData);
   }
   

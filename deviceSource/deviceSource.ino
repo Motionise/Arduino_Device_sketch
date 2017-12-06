@@ -156,7 +156,7 @@ void setup() {
   // Now we can talk to the HMC5883l
 
   // ==================== HMC5883L ============================
-  //mag.initialize();
+  mag.initialize();
 //  Serial.print("Testing Mag...  ");
 //  Serial.println(mag.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
 //  Serial.println("Setup Complete");
@@ -205,7 +205,7 @@ void loop() {
 //    Serial.print("mag x : "); Serial.print(mx); Serial.print("\t");
 //    Serial.print("y : "); Serial.print(my); Serial.print("\t");
 //    Serial.print("z : "); Serial.print(mz); Serial.print("\t");
-    
+
     // To calculate heading in degrees. 0 degree indicates North
     float heading = atan2(my, mx);
     if(heading < 0) heading += 2 * M_PI;
@@ -214,14 +214,14 @@ void loop() {
     //Serial.println("\t");
     ms = millis();
     digitalWrite(LED, state);
-    state = !state;
+    state = !state; 
 
     //Flex_sensor_val
     int indexfingerFlex = analogRead(A0);
-    int middlefingerFlex = analogRead(A1);
+    //int middlefingerFlex = analogRead(A1);
 
     //finallllllllllllllly
-    flexData = "flex " + String(indexfingerFlex) + " " + String(middlefingerFlex);
+    flexData = "flex " + String(indexfingerFlex);
     kalmanData = "kalman " + String(kalmanVal);
     magData = "mag " + String(mx) +  " " + String(my) + " " + String(mz);
     sensorData = flexData + ":" + kalmanData + ":" + magData + "\n";
